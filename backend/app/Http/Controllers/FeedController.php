@@ -27,6 +27,59 @@ class FeedController extends Controller
         ]);
     }
 
+    public function addFavorite($id)
+    {
+        $user_id = Auth::id();
+
+        if (!$id) {
+            return response()->json([
+                'message' => 'Add failed'
+            ]);
+        }
+        $user = DB::insert('insert into favorites (user_id, favorite_id) values (?, ?)', [$user_id, $id]);
+
+        return response()->json([
+            'message' => 'User Created!',
+            'user' => $user
+        ]);
+    }
+
+    public function getUser()
+    {
+        $user_id = Auth::id();
+
+        if (!$user_id) {
+            return response()->json([
+                'message' => 'receive failed'
+            ]);
+        }
+        $user = DB::table('users')
+            ->select('*')
+            ->whereNotIn('id', DB::table('blocks')->select('blcked_user_id')->where('user_id', '=', $user_id))
+            ->get();
+
+        return response()->json([
+            'message' => 'Done!',
+            'user' => $user
+        ]);
+    }
+
+    public function getMessages(){
+        $user_id = Auth::id();
+
+        $users = DB::table('chats')
+            ->select('*')
+            ->join('users', 'chats.receiver_id', '=', 'users.id')
+            ->orderBy('chats.created_at', 'DESC')
+            ->where('users.id', '=',$user_id)
+            ->get();
+
+        return response()->json([
+            "status" => "Success",
+            "data" => $users
+        ]);
+    }
+
     public function blockUser($id)
     {
         $user_id = Auth::id();

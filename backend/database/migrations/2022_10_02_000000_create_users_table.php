@@ -24,6 +24,8 @@ class CreateUsersTable extends Migration
             $table->string("bio")->nullable();
             $table->string("age")->nullable();
             $table->string("profile_picture")->nullable();
+            $table->string("latitude")->nullable();
+            $table->string("longitude")->nullable();
 
             $table->timestamps();
         });

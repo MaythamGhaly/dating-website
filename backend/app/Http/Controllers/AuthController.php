@@ -20,7 +20,10 @@ class AuthController extends Controller
             'gender_interested'=> 'string|required',
             'bio'=>'string|required',
             'age'=>'string|required',
-            'profile_picture'=>'string|required'
+            'profile_picture'=>'string|required',
+            'latitude'=>'string|required',
+            'longitude'=>'string|required'
+
         ]);
         if ($validator->fails()){
             return response()->json([
