@@ -81,6 +81,26 @@ class FeedController extends Controller
         ]);
     }
 
+    public function addMessages(Request $request)
+    {
+        $user_id = Auth::id();
+        $sender_id=$request->sender_id;
+        $message=$request->message;
+
+
+        if (!$sender_id && !$message) {
+            return response()->json([
+                'message' => 'Add failed'
+            ]);
+        }
+        $user = DB::insert('insert into chats (sender_id, message, receiver_id) values (?, ?, ?)', [$user_id,$message, $sender_id]);
+
+        return response()->json([
+            'message' => 'message added!',
+            'user' => $user
+        ]);
+    }
+
     public function blockUser($id)
     {
         $user_id = Auth::id();
