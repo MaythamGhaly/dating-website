@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 
         Route::post('/logout', [AuthController::class, "logout"])->name("logout");
         Route::post('/get_favorites', [FeedController::class, "getFavorites"])->name("get-favorites");
+        Route::post('/block_user/{id?}', [FeedController::class, "blockUser"])->name("block-user");
+        
     });
     Route::post('/register', [AuthController::class, "register"])->name("register");
     Route::post('/login', [AuthController::class, "login"])->name("login");
