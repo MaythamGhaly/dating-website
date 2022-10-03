@@ -64,7 +64,7 @@ class FeedController extends Controller
         ]);
     }
 
-    public function getMessages(){
+    public function getMessages($id){
         $user_id = Auth::id();
 
         $users = DB::table('chats')
@@ -72,6 +72,7 @@ class FeedController extends Controller
             ->join('users', 'chats.receiver_id', '=', 'users.id')
             ->orderBy('chats.created_at', 'DESC')
             ->where('users.id', '=',$user_id)
+            ->where('chats.sender_id', '=',$id)
             ->get();
 
         return response()->json([
