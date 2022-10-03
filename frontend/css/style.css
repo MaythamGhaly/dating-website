@@ -75,7 +75,7 @@ h3{
     justify-content: space-between;
 }
 
-.input {
+.input, .dropdown {
     background-color: #eaeaf4;
     border-radius: 10px;
     height: 40px;
@@ -93,6 +93,9 @@ h3{
 .login-content h3 {
     margin-top: 30px;
     margin-bottom: 10px;
+}
+.login-content label {
+    margin-bottom: 20px;
 }
 
 .btn {
