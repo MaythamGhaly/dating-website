@@ -9,15 +9,6 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
-    /**
-     * Create a new AuthController instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth:api', ['except' => ['login' , 'register']]);
-    }
 
     public function register(){
 
@@ -46,19 +37,12 @@ class AuthController extends Controller
             'age'=>request()->get('age'),
             'profile_picture'=>request()->get('profile_picture'),
         ]);
-
-
         return response()-> json([
             'message'=>'User Created!',
             'user'=>$user
         ]);
     }
 
-    /**
-     * Get a JWT via given credentials.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function login()
     {
         $credentials = request(['email', 'password']);
@@ -66,36 +50,9 @@ class AuthController extends Controller
         if (! $token = JWTAuth::attempt($credentials)) {
             return response()->json(['error' => 'email/password incorrect!'], 401);
         }
-
-        $user = User::all();
-
-        return $this->respondWithToken($user);
+        return $this->respondWithToken($token);
     }
 
-    /**
-     * Get the authenticated User.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-
-    /**
-     * Log the user out (Invalidate the token).
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function logout()
-    {
-        auth()->logout();
-
-        return response()->json(['message' => 'Successfully logged out']);
-    }
-    /**
-     * Get the token array structure.
-     *
-     * @param  string $token
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
     protected function respondWithToken($token)
     {
         return response()->json([
