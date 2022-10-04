@@ -1,5 +1,6 @@
 
 export const LoginValidation = () => {
+    if(document.getElementById("login-btn")){
     document.getElementById("login-btn").addEventListener("click", async () => {
         let email = document.getElementById("login-email").value;
         let password = document.getElementById("login-password").value;
@@ -10,22 +11,24 @@ export const LoginValidation = () => {
         const url = "http://127.0.0.1:8000/api/login";
         // console.log(JSON.stringify(data));
 
-        await axios.post(url, data)
+        await axios.post(url, data , { headers: {'Authorization': `Bearer ${localStorage.getItem(`token`)}`}} )
             .then(function (response) {
                 console.log(response)
                 print(response);
+                return
             })
             .catch(function (error) {
                 geterror();
                 console.log(error);
             });
-    })
+    })}
 }
 
 function geterror(){
     let errorDiv = document.getElementById("error-login");
         errorDiv.innerHTML = "Wrong Credentials!";
         errorDiv.classList.remove("hidden");
+        return
 }
 
 function print(response){
@@ -35,6 +38,7 @@ function print(response){
         let errorDiv = document.getElementById("error-login");
         errorDiv.innerHTML = "Wrong Credentials!";
         errorDiv.classList.remove("hidden");
+        return
     }
     else{
 
@@ -42,6 +46,7 @@ function print(response){
         if(document.getElementById("error-login"))
         document.getElementById("error-login").classList.add("hidden");
         window.location.href = 'http://127.0.0.1:5501/feed.html';
+        
     }
 }
 
