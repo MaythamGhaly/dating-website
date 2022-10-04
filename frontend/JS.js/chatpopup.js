@@ -1,3 +1,4 @@
+import {sendChats} from "./sendchat.js";
 export const chatPopup = async (user_id) => {
     if (document.getElementById("chat_popup")) {
         document.getElementById("chat_popup").classList.remove('hidden');
@@ -25,23 +26,11 @@ export const chatPopup = async (user_id) => {
             }
 
         })
-
         document.getElementById('msg-send').addEventListener('click', async () => {
-            const message = document.getElementById('msg').value;
-            const url = 'http://127.0.0.1:8000/api/add_messages';
-
-            const data = JSON.stringify({
-                message,
-                receiver_id: document.getElementById("user-id").getAttribute("user-id")
-            });
-            const msg = await axios.post(url, data, { headers: { 'Authorization': `Bearer ${localStorage.getItem(`token`)}` } });
-            if(typeof msg.data.jwt !== "undefined"){
-                localStorage.setItem("token",msg.data.jwt);
-                const user_message = document.createElement("li");
-                user_message.classList.add("sender");
-                user_message.innerHTML = message;
-                document.getElementById("chat-box").append(user_message)
-            }
+            console.log(receiver_id)
+            const chat_message = document.getElementById('msg').value;
+            sendChats(receiver_id,chat_message);
+            document.getElementById('msg').value=""
         })
 
 

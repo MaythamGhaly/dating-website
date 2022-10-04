@@ -1,5 +1,6 @@
 import { userimp } from "./user.js";
 import {chatPopup} from "./chatpopup.js"
+import {addFavorite} from "./add-favorite.js"
 
 export const GetUsers = async () => {
 
@@ -21,9 +22,24 @@ export const GetUsers = async () => {
         users_section.forEach(user => {
             user.addEventListener("click", (e) => {
                 let id = (e.currentTarget.parentElement.id);
-                console.log(id);
                 chatPopup(id);
 
+            })
+        });
+
+        const favorites = Array.prototype.slice.call(document.getElementsByClassName("favorite-icon"));
+        favorites.forEach(favorite => {
+            favorite.addEventListener("click", (e) => {
+                let id = (e.currentTarget.parentElement.id);
+                addFavorite(id);
+            })
+        });
+
+        const blocks = Array.prototype.slice.call(document.getElementsByClassName("blocks-icon"));
+        blocks.forEach(block => {
+            block.addEventListener("click", (e) => {
+                let id = (e.currentTarget.parentElement.id);
+                addBlock(id);
             })
         });
 
