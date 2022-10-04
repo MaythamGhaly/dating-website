@@ -64,15 +64,12 @@ class FeedController extends Controller
         ]);
     }
 
-    public function getReceiveMessages($id){
-        $user_id = Auth::id();
+    public function getReceiveMessages(){
 
         $users = DB::table('chats')
             ->select('*')
             ->join('users', 'chats.receiver_id', '=', 'users.id')
             ->orderBy('chats.created_at', 'DESC')
-            // ->where('chats.receiver_id', '=',$user_id)
-            // ->where('chats.sender_id', '=',$id)
             ->get();
 
         return response()->json([
@@ -84,16 +81,16 @@ class FeedController extends Controller
     public function addMessages(Request $request)
     {
         $user_id = Auth::id();
-        $sender_id=$request->sender_id;
+        $receiver_id=$request->receiver_id;
         $message=$request->message;
 
 
-        if (!$sender_id && !$message) {
+        if (!$receiver_id && !$message) {
             return response()->json([
                 'message' => 'Add failed'
             ]);
         }
-        $user = DB::insert('insert into chats (sender_id, message, receiver_id) values (?, ?, ?)', [$user_id,$message, $sender_id]);
+        $user = DB::insert('insert into chats (sender_id, message, receiver_id) values (?, ?, ?)', [$user_id,$message, $receiver_id]);
 
         return response()->json([
             'message' => 'message added!',
