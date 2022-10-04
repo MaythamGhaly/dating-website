@@ -6,11 +6,11 @@ export const PageLocations = () => {
         })
     }
 
-    if (document.getElementById("to-login")) {
-        document.getElementById("to-login").addEventListener("click", () => {
-            window.location.href = "http://127.0.0.1:5501/login.html";
-        })
-    }
+    // if (document.getElementById("to-login")) {
+    //     document.getElementById("to-login").addEventListener("click", () => {
+    //         window.location.href = "http://127.0.0.1:5501/login.html";
+    //     })
+    // }
 
     if (document.getElementById("send-msg")) {
         document.getElementById("send-msg").addEventListener("click", () => {
