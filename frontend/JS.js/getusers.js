@@ -1,6 +1,7 @@
 import { userimp } from "./user.js";
 import {chatPopup} from "./chatpopup.js"
 import {addFavorite} from "./add-favorite.js"
+import {addBlock} from "./add-block.js"
 
 export const GetUsers = async () => {
 
