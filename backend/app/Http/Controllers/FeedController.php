@@ -27,6 +27,20 @@ class FeedController extends Controller
         ]);
     }
 
+    public function getProfile()
+    {
+        $user_id = Auth::id();
+        $users = DB::table('users')
+            ->select('*')
+            ->where('id', '=', $user_id)
+            ->get();
+
+        return response()->json([
+            "status" => "Success",
+            "data" => $users
+        ]);
+    }
+
     public function getBlocks()
     {
         $user_id = Auth::id();

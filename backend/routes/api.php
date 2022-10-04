@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Auth;
         Route::post('/add_messages', [FeedController::class, "addMessages"])->name("add-messages");
         Route::get('/delete_blocks/{id?}', [FeedController::class, "deletBlocks"])->name("delet-blocks");
         Route::get('/delete_favorite/{id?}', [FeedController::class, "deletFavorite"])->name("delet-favorite");
+        Route::get('/get_profile', [FeedController::class, "getProfile"])->name("get-profile");
+
 
 
 
