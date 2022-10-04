@@ -38,6 +38,12 @@ html {
 .color_green{
     color: green;
 }
+.back{
+    height: 20[x];
+    width: 50px;
+    font-size: 35px;
+    cursor: pointer;
+}
 
 h3 {
     font-size: 13px;
@@ -50,7 +56,7 @@ h3 {
 .headers {
     width: 100%;
     display: flex;
-    flex-direction: column;
+    
 }
 
 .dash {
@@ -148,6 +154,10 @@ h3 {
 
 .pointer {
     cursor: pointer;
+}
+
+.flex{
+    display: flex;
 }
 
 .row {
