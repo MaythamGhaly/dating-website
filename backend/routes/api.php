@@ -7,13 +7,13 @@ use App\Http\Controllers\FeedController;
 use Illuminate\Support\Facades\Auth;
 
 
-    Route::group(['middleware' => 'auth:api'], function () {
+    Route::group(['middleware' => 'user.role'], function () {
 
         Route::post('/logout', [AuthController::class, "logout"])->name("logout");
         Route::post('/get_favorites', [FeedController::class, "getFavorites"])->name("get-favorites");
         Route::post('/block_user/{id?}', [FeedController::class, "blockUser"])->name("block-user");
         Route::post('/add_favorite/{id?}', [FeedController::class, "addFavorite"])->name("add-favorite");
-        Route::post('/get_users', [FeedController::class, "getUser"])->name("get_users");
+        Route::get('/get_users', [FeedController::class, "getUser"])->name("get_users");
         Route::post('/get_messages/{id?}', [FeedController::class, "getMessages"])->name("get-messages");
         Route::post('/add_messages', [FeedController::class, "addMessages"])->name("add-messages");
 
