@@ -14,7 +14,7 @@ export const userimp = (user) => {
     <span id="" class="pointer color_blue">
         &#9950; block
     </span>
-    <span id="send-msg" class="pointer color_green">
+    <span id="send-msg" class="sendmsg pointer color_green">
         &#128389; send a message
     </span>
 </div>`)
