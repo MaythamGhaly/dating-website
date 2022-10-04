@@ -27,6 +27,49 @@ class FeedController extends Controller
         ]);
     }
 
+    public function getBlocks()
+    {
+        $user_id = Auth::id();
+        $users = DB::table('users')
+            ->select('*')
+            ->join('blocks', 'users.id', '=', 'blocks.blcked_user_id')
+            ->where('blocks.user_id', '=', $user_id)
+            ->get();
+
+        return response()->json([
+            "status" => "Success",
+            "data" => $users
+        ]);
+    }
+
+    public function deletBlocks($id)
+    {
+        $user_id = Auth::id();
+        $users = DB::table('blocks')
+            ->where('blocks.user_id', '=', $user_id)
+            ->where('blocks.blcked_user_id', '=', $id)
+            ->delete();
+
+        return response()->json([
+            "status" => "Success",
+            "data" => $users
+        ]);
+    }
+
+    public function deletFavorite($id)
+    {
+        $user_id = Auth::id();
+        $users = DB::table('favorites')
+            ->where('favorites.user_id', '=', $user_id)
+            ->where('favorites.favorite_id', '=', $id)
+            ->delete();
+
+        return response()->json([
+            "status" => "Success",
+            "data" => $users
+        ]);
+    }
+
     public function addFavorite($id)
     {
         $user_id = Auth::id();
@@ -64,7 +107,8 @@ class FeedController extends Controller
         ]);
     }
 
-    public function getReceiveMessages(){
+    public function getReceiveMessages()
+    {
 
         $users = DB::table('chats')
             ->select('*')
@@ -81,8 +125,8 @@ class FeedController extends Controller
     public function addMessages(Request $request)
     {
         $user_id = Auth::id();
-        $receiver_id=$request->receiver_id;
-        $message=$request->message;
+        $receiver_id = $request->receiver_id;
+        $message = $request->message;
 
 
         if (!$receiver_id && !$message) {
@@ -90,7 +134,7 @@ class FeedController extends Controller
                 'message' => 'Add failed'
             ]);
         }
-        $user = DB::insert('insert into chats (sender_id, message, receiver_id) values (?, ?, ?)', [$user_id,$message, $receiver_id]);
+        $user = DB::insert('insert into chats (sender_id, message, receiver_id) values (?, ?, ?)', [$user_id, $message, $receiver_id]);
 
         return response()->json([
             'message' => 'message added!',
