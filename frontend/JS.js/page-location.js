@@ -23,4 +23,10 @@ export const PageLocations = () => {
             window.location.href = "../feed.html";
         })
     }
+
+    if (document.getElementById("go_to_profile")) {
+        document.getElementById("go_to_profile").addEventListener("click", () => {
+            window.location.href = "../profile.html";
+        })
+    }
 }
