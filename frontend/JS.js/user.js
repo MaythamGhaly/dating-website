@@ -8,10 +8,10 @@ export const userimp = (user) => {
     <p id="profile-card-email" class="title">${user.bio}</p>
     <p id="profile-card-email" class="title">${user.age}</p>
 
-    <span id="" class="pointer color_blue">
+    <span id="favorite-icon" class="favorite-icon pointer color_blue">
         &#9733; add to favorite!
     </span>
-    <span id="" class="pointer color_blue">
+    <span id="" class="blocks-icon pointer color_blue">
         &#9950; block
     </span>
     <span id="send-msg" class="sendmsg pointer color_green">
