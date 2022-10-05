@@ -29,4 +29,10 @@ export const PageLocations = () => {
             window.location.href = "../profile.html";
         })
     }
+
+    if (document.getElementById("register-btn")) {
+        document.getElementById("register-btn").addEventListener("click", () => {
+            window.location.href = "../register.html";
+        })
+    }
 }

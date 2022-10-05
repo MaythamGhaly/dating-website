@@ -21,8 +21,6 @@ class AuthController extends Controller
             'bio'=>'string|required',
             'age'=>'string|required',
             'profile_picture'=>'string|required',
-            'latitude'=>'string|required',
-            'longitude'=>'string|required'
 
         ]);
         if ($validator->fails()){
