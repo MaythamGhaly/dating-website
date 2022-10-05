@@ -20,7 +20,7 @@
                 <input type="text" placeholder="Bio" class="input" id="bio" />
                 <input type="text" placeholder="Age" class="input" id="age" />
                 <label for="img">Select profile picture:</label>
-                <input type="file" id="profile" name="img" accept="image/*">
+                <input type="file" id="profile_picture" name="img" accept="image/*">
                 <label for="gender">Choose your gender:
                     <select name="gender" id="gender" class="dropdown">
                         <option value="Male">Male</option>
@@ -28,11 +28,14 @@
                     </select>
                 </label>
                 <label for="gender">Gender interested:
-                    <select name="gender" id="gender-intersted" class="dropdown">
+                    <select name="gender" id="gender_intersted" class="dropdown">
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
                 </label>
+                <button class="location-btn" id="get-location">&#9873; Location</button>
+                <h5 id="lat"></h5>
+                <h5 id="lon"></h5>
                 <button class="btn" id="registerr">Register</button>
             </div>
         </div>
