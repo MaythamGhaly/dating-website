@@ -129,6 +129,7 @@ h3 {
     color: #fff;
     border: none;
     border-radius: 10px;
+    margin-top: 10px;
 }
 
 /* Feed page */
@@ -168,6 +169,12 @@ h3 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.location-btn{
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 /* chat popup */
@@ -219,6 +226,7 @@ h3 {
 .chats {
     background-color: #adadad;
     width: 100%;
+    min-height: 200px;
 }
 
 .chats-section {
