@@ -7,8 +7,8 @@ export const profileimp = (profile) => {
     <p id="profile-card-email" class="title">${profile.gender}</p>
     <p id="profile-card-email" class="title">${profile.bio}</p>
     <p id="profile-card-email" class="title">${profile.age}</p>
-    <p id="profile-card-email" class="title">${profile.laitude}</p>
-    <p id="profile-card-email" class="title">${profile.longitude}</p>
+    <p id="profile-card-email" class="title">latitude: ${profile.laitude}</p>
+    <p id="profile-card-email" class="title">longitude: ${profile.longitude}</p>
 
 
 </div>`)

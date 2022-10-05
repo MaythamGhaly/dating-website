@@ -7,6 +7,9 @@ export const blockimp = (block) => {
     <p id="profile-card-email" class="title">${block.gender}</p>
     <p id="profile-card-email" class="title">${block.bio}</p>
     <p id="profile-card-email" class="title">${block.age}</p>
+    <p id="profile-card-email" class="title">latitude: ${block.latitude}</p>
+    <p id="profile-card-email" class="title">longitude: ${block.longitude}</p>
+
 
     <span id="" class="block-remove pointer color_blue">
         &#9950; remove from block!

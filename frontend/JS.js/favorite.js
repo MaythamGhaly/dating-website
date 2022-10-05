@@ -7,6 +7,9 @@ export const favoriteimp = (favorite) => {
     <p id="profile-card-email" class="title">${favorite.gender}</p>
     <p id="profile-card-email" class="title">${favorite.bio}</p>
     <p id="profile-card-email" class="title">${favorite.age}</p>
+    <p id="profile-card-email" class="title">latitude: ${favorite.latitude}</p>
+    <p id="profile-card-email" class="title">longitude: ${favorite.longitude}</p>
+
 
     <span id="" class="favorite-remove pointer color_blue">
         &#9733; remove from favorite!

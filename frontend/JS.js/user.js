@@ -7,6 +7,9 @@ export const userimp = (user) => {
     <p id="profile-card-email" class="title">${user.gender}</p>
     <p id="profile-card-email" class="title">${user.bio}</p>
     <p id="profile-card-email" class="title">${user.age}</p>
+    <p id="profile-card-email" class="title">latitude : ${user.latitude}</p>
+    <p id="profile-card-email" class="title">longitude : ${user.longitude}</p>
+
 
     <span id="favorite-icon" class="favorite-icon pointer color_blue">
         &#9733; add to favorite!
