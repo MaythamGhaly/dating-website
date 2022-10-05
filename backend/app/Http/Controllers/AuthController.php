@@ -21,11 +21,13 @@ class AuthController extends Controller
             'bio'=>'string|required',
             'age'=>'string|required',
             'profile_picture'=>'string|required',
+            'latitude'=>'string|required',
+            'longitude'=>'string|required'
 
         ]);
         if ($validator->fails()){
             return response()->json([
-                'message' => 'registration faild'
+                'message' => 'registration faild!'
             ]);
         }
         $user = User::create([
@@ -37,6 +39,9 @@ class AuthController extends Controller
             'bio'=>request()->get('bio'),
             'age'=>request()->get('age'),
             'profile_picture'=>request()->get('profile_picture'),
+            'latitude'=>request()->get('latitude'),
+            'longitude'=>request()->get('profile_picture'),
+
         ]);
         return response()-> json([
             'message'=>'User Created!',
