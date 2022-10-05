@@ -104,7 +104,7 @@ class FeedController extends Controller
     public function getUser()
     {
         $user_id = Auth::id();
-
+        // $gender_interested= Auth::gender_interested();
         if (!$user_id) {
             return response()->json([
                 'message' => 'receive failed'
@@ -112,6 +112,8 @@ class FeedController extends Controller
         }
         $user = DB::table('users')
             ->select('*')
+            ->where('id','<>',$user_id)
+            // ->where('gender_interested','=',$gender_interested)
             ->whereNotIn('id', DB::table('blocks')->select('blcked_user_id')->where('user_id', '=', $user_id))
             ->get();
 
